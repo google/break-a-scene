@@ -1,4 +1,4 @@
-# Break-A-Scene: Extracting Multiple Concepts from a Single Image
+# Break-A-Scene: Extracting Multiple Concepts from a Single Image [SIGGRAPH Asia 2023]
 <a href="https://omriavrahami.com/break-a-scene/"><img src="https://img.shields.io/static/v1?label=Project&message=Website&color=blue"></a>
 <a href="https://www.youtube.com/watch?v=-9EA-BhizgM"><img src="https://img.shields.io/static/v1?label=YouTube&message=Video&color=orange"></a>
 <a href="https://arxiv.org/abs/2305.16311"><img src="https://img.shields.io/badge/arXiv-2305.16311-b31b1b.svg"></a>
@@ -80,10 +80,10 @@ python inference.py \
   --output_path DESTINATION_PATH
 ```
 
-For example, in the above case:
+For example, in the aforementioned case:
 ```bash
 python inference.py \
-  --model_path outputs/creature \
+  --model_path "outputs/creature" \
   --prompt "a photo of <asset0> at the beach" \
   --output_path "outputs/result.jpg"
 ```
@@ -91,8 +91,32 @@ python inference.py \
 Or:
 ```bash
 python inference.py \
-  --model_path outputs/creature \
+  --model_path "outputs/creature" \
   --prompt "an oil painting of <asset1> and <asset2>" \
+  --output_path "outputs/result.jpg"
+```
+
+## Local editing by example (optional)
+
+After extracting the concepts, if you are interested in locally editing another image, you can use [Blended Latent Diffusion](https://omriavrahami.com/blended-latent-diffusion-page/) as follows:
+1. Download the image editing script `scripts/text_editing_stable_diffusion.py` from [Blended Latent Diffusion repository](https://github.com/omriav/blended-latent-diffusion).
+2. Use the fine-tuned model along with the desired concept that you want to add by:
+```bash
+python text_editing_stable_diffusion.py \
+  --model_path TRAINED_MODEL_PATH \
+  --prompt PROMPT \
+  --init_image THE_IMAGE_TO_EDIT \
+  --mask THE_AREA_TO_EDIT \
+  --output_path DESTINATION_PATH
+```
+
+For example, in the aforementioned case:
+```bash
+python text_editing_stable_diffusion.py \
+  --model_path "outputs/creature" \
+  --prompt "a photo of <asset2>" \
+  --init_image "examples/chicken/img.jpg" \
+  --mask "examples/chicken/mask2.png" \
   --output_path "outputs/result.jpg"
 ```
 
