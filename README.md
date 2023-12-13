@@ -123,11 +123,21 @@ python text_editing_stable_diffusion.py \
 ## Citation
 If you find this useful for your research, please cite the following:
 ```bibtex
-@article{avrahami2023break,
-  title={Break-A-Scene: Extracting Multiple Concepts from a Single Image},
-  author={Avrahami, Omri and Aberman, Kfir and Fried, Ohad and Cohen-Or, Daniel and Lischinski, Dani},
-  journal={arXiv preprint arXiv:2305.16311},
-  year={2023}
+@inproceedings{avrahami2023bas,
+  author = {Avrahami, Omri and Aberman, Kfir and Fried, Ohad and Cohen-Or, Daniel and Lischinski, Dani},
+  title = {Break-A-Scene: Extracting Multiple Concepts from a Single Image},
+  year = {2023},
+  isbn = {9798400703157},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  url = {https://doi.org/10.1145/3610548.3618154},
+  doi = {10.1145/3610548.3618154},        
+  booktitle = {SIGGRAPH Asia 2023 Conference Papers},
+  articleno = {96},
+  numpages = {12},
+  keywords = {textual inversion, multiple concept extraction, personalization},
+  location = {, Sydney, NSW, Australia, },
+  series = {SA '23}
 }
 ```
 
