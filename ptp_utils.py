@@ -101,14 +101,15 @@ class AttentionControl(abc.ABC):
 
     def __call__(self, attn, is_cross: bool, place_in_unet: str):
         if self.cur_att_layer >= self.num_uncond_att_layers:
+            attn_ = attn.clone()
             h = attn.shape[0]
-            attn[h // 2 :] = self.forward(attn[h // 2 :], is_cross, place_in_unet)
+            attn_[h // 2 :] = self.forward(attn[h // 2 :], is_cross, place_in_unet)
         self.cur_att_layer += 1
         if self.cur_att_layer == self.num_att_layers + self.num_uncond_att_layers:
             self.cur_att_layer = 0
             self.cur_step += 1
             self.between_steps()
-        return attn
+        return attn_
 
     def reset(self):
         self.cur_step = 0
