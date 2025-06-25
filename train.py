@@ -1193,7 +1193,12 @@ class SpatialDreambooth:
                                 is_cross=True,
                                 select=batch_idx,
                             )
-                            curr_cond_batch_idx = self.args.train_batch_size + batch_idx
+                            
+                            # Choose the right index based on whether prior preservation is used
+                            if self.args.with_prior_preservation:
+                                curr_cond_batch_idx = self.args.train_batch_size + batch_idx
+                            else:
+                                curr_cond_batch_idx = batch_idx
 
                             for mask_id in range(len(GT_masks)):
                                 curr_placeholder_token_id = self.placeholder_token_ids[
